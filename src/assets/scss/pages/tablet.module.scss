@@ -1,0 +1,144 @@
+@use 'src/assets/scss/abstract/variables';
+
+/* media query - tablet */
+  .wrapper {
+    @media (min-width: 769px) and (max-width: 1100px) {
+      /* s: container */
+      .container-wrapper {
+        .content-wrap {
+          .cont-full-box {
+            .swiper-container {
+              .swiper-wrap {
+                .thumb-swiper-inner {
+                  .banner-title-box {
+                    max-width: 578px; // 586px
+                    left: calc(50% - 10px);
+                    transform: translate(calc(-50% + 10px), -50%);
+
+                    .text {
+                      font-size: 100px;
+                      line-height: 110%;
+                      letter-spacing: -5px;
+                    }
+                  }
+                }
+                .first-slide {
+                  .thumb-swiper-inner {
+                    .banner-title-box {
+                      max-width: 520px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          /* video-box */
+          .video-box {
+            .controls {
+              .btn-play {
+                width: 102px;
+                height: 102px;
+              }
+            }
+          }
+          .lottie-list-wrap {
+            max-width: 1000px;
+          }
+
+          .journey-list-wrap {
+            .journey-list {
+              .journey-item {
+
+                .img-area {
+                  flex: 0 0 400px;
+                  height: 400px;
+                }
+
+                ~ .journey-item {
+                  //margin-top: 790px;
+                }
+              }
+            }
+          }
+        }
+      }
+      /* e: container */
+
+      /* s: footer */
+      .footer-wrapper {
+        .footer-inner {
+          padding: {
+            left: 50px;
+            right: 50px;
+          }
+        }
+      }
+      /* e: footer */
+    }
+    /* hover - pc only */
+    @media (hover: hover) {
+      .container-wrapper {
+        .content-wrap {
+          .lottie-list-wrap {
+            .lottie-list {
+              .lottie-item {
+                &:hover {
+                  .thumb-box {
+                    .lottie-animation {
+                      display: block;
+                      &:before {
+                        opacity: 0.8;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .manage-bg-wrap {
+            .grid-list-wrap {
+              .grid-list {
+                width: 100%;
+                aspect-ratio: 960 / 740;
+                height: initial;
+                .grid-item {
+                  &:hover {
+                    .hover-box {
+                      height: initial;
+                      border: 1px solid variables.$colorYellow;
+                      background: variables.$colorYellow;
+                      border-radius: 30px;
+
+                      .title {
+                        color: variables.$colorGreen;
+
+                        &:after {
+                          background-color: variables.$colorGreen;
+                        }
+                      }
+
+                      .desc {
+                        display: block;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .swiper-container {
+            :global(.swiper-button-prev),
+            :global(.swiper-button-next) {
+              &:hover {
+                opacity: .8;
+              }
+            }
+          }
+        }
+      }
+    }
+    /* // hover */
+  }
+/* // media query - mobile */

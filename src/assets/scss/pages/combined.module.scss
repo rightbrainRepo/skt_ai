@@ -1,0 +1,7 @@
+@use 'sass:meta';
+
+// pages
+@include meta.load-css("main.module");
+@include meta.load-css("tablet.module");
+@include meta.load-css("mobile.module");
+
