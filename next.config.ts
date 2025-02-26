@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 const envFile = `.env.${process.env.APP_ENV ?? 'loc'}`
 dotenv.config({ path: envFile })
-// 김재성 : 최종 산출물은 아래 문구 제거
+// rightbrain
 const assetPath = `${process.env.NEXT_PUBLIC_ASSET_PATH ? process.env.NEXT_PUBLIC_ASSET_PATH : ''}`
 
 const nextConfig: NextConfig = {
@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
 	env: {
 		NEXT_PUBLIC_WAITLIST_FORM_KEY: process.env.NEXT_PUBLIC_WAITLIST_FORM_KEY
 	},
-	// 김재성 : 최종 산출물은 아래 문구 제거
+	// rightbrain
 	assetPrefix: assetPath,
 };
 

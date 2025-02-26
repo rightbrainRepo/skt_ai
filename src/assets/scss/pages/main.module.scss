@@ -141,9 +141,9 @@
                 font-size: 0;
                 text-align: center;
 
-                @for $i from 1 through 4 {
+                @for $i from 1 through 6 {
                   .text {
-                    &:nth-child(#{$i}) {
+                    &:nth-of-type(#{$i}) {
                       opacity: 0;
                       transform: translateX(10px);
                       transition: opacity 1s cubic-bezier(0.48, 1, 0.3, 1), transform 1s cubic-bezier(0.48, 1, 0.3, 1);
@@ -179,35 +179,35 @@
             :global(.swiper-slide) {
               &:nth-child(1) {
                 .banner-title-box {
-                  .text:nth-child(2) {
+                  .text:nth-of-type(2) {
                     margin-left: 0;
                   }
                 }
               }
               &:nth-child(2) {
                 .banner-title-box {
-                  .text:nth-child(3) {
+                  .text:nth-of-type(2) {
                     margin-left: 0;
                   }
                 }
               }
               &:nth-child(3) {
                 .banner-title-box {
-                  .text:nth-child(3) {
+                  .text:nth-of-type(3) {
                     margin-left: 0;
                   }
                 }
               }
               &:nth-child(4) {
                 .banner-title-box {
-                  .text:nth-child(3) {
+                  .text:nth-of-type(3) {
                     margin-left: 0;
                   }
                 }
               }
               &:nth-child(5) {
                 .banner-title-box {
-                  .text:nth-child(3) {
+                  .text:nth-of-type(3) {
                     margin-left: 0;
                   }
                 }
@@ -219,7 +219,7 @@
                 .banner-title-box {
                   @for $i from 1 through 4 {
                     .text{
-                      &:nth-child(#{$i}) {
+                      &:nth-of-type(#{$i}) {
                         opacity: 1;
                         transform: translateX(0);
                       }

@@ -4,7 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 import styles from "@/assets/scss/pages/combined.module.scss";
 
 export default function Terms() {
-	// 김재성 : 최종 산출물은 제거 & 이미지 경로도 다 수정해야됨
+	// rightbrain
 	const assetPath = process.env.NEXT_PUBLIC_ASSET_PATH ? process.env.NEXT_PUBLIC_ASSET_PATH : '';
 	return (
 		<>

@@ -409,7 +409,7 @@ export default function Home() {
 	};
 	console.log(process.env)
 
-	// 김재성 : 최종 산출물은 제거 & 이미지 경로도 다 수정해야됨
+	// rightbrain
 	const assetPath = process.env.NEXT_PUBLIC_ASSET_PATH ? process.env.NEXT_PUBLIC_ASSET_PATH : '';
 	return (
 		<>
@@ -453,7 +453,7 @@ export default function Home() {
 											}
 										</div>
 										<div className={styles['banner-title-box']}>
-											<span className={styles['text']}>Navigate</span>
+											<span className={styles['text']}>Navigate</span><br />
 											<span className={styles['text']}>your</span>
 											<span className={styles['text']}>life</span>
 										</div>
@@ -482,7 +482,7 @@ export default function Home() {
 										</div>
 										<div className={styles['banner-title-box']}>
 											<span className={styles['text']}>Aster</span>
-											<span className={styles['text']}>helps</span>
+											<span className={styles['text']}>helps</span><br />
 											<span className={styles['text']}>you</span>
 											<span className={styles['text']}>execute</span>
 										</div>
@@ -497,7 +497,7 @@ export default function Home() {
 										</div>
 										<div className={styles['banner-title-box']}>
 											<span className={styles['text']}>Aster</span>
-											<span className={styles['text']}>sends</span>
+											<span className={styles['text']}>sends</span><br />
 											<span className={styles['text']}>you</span>
 											<span className={styles['text']}>reminders</span>
 										</div>
@@ -512,7 +512,7 @@ export default function Home() {
 										</div>
 										<div className={styles['banner-title-box']}>
 											<span className={styles['text']}>Aster</span>
-											<span className={styles['text']}>gives</span>
+											<span className={styles['text']}>gives</span><br />
 											<span className={styles['text']}>you</span>
 											<span className={styles['text']}>advice</span>
 										</div>
