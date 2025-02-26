@@ -645,9 +645,8 @@
   }
 }
 
-@media (max-width: 280px) {
+@media (max-width: 330px) {
   .wrapper {
-
     /* s: container */
     .container-wrapper {
       .content-wrap {
@@ -658,9 +657,14 @@
                 .banner-title-box {
                   .text {
                     font-size: 36px;
+                    line-height: 45px;
                   }
                 }
               }
+            }
+            .swiper-thumb-wrap {}
+            ~ .input-group {
+              top: calc(50% - 110px + 110px);
             }
           }
         }
