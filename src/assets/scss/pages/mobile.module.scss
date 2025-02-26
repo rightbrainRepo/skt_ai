@@ -469,6 +469,8 @@
         .input-group {
 
           .input-desc {
+            font-size: 15px;
+            line-height: 21px;
             span {
               display: block;
             }
@@ -640,6 +642,30 @@
       }
     }
     /* e: dialog */
+  }
+}
+
+@media (max-width: 280px) {
+  .wrapper {
+
+    /* s: container */
+    .container-wrapper {
+      .content-wrap {
+        .cont-full-box {
+          .swiper-container {
+            .swiper-wrap {
+              .thumb-swiper-inner {
+                .banner-title-box {
+                  .text {
+                    font-size: 36px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 /* // media query - mobile */
