@@ -1,6 +1,7 @@
 declare global {
 	interface Window {
 		lottie:any;
+		gtag?: (...args: any[]) => void;
 	}
 }
 

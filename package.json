@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cross-env NODE_ENV=production next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start:dev": "APP_ENV=dev next dev",
+    "start:prod": "APP_ENV=prod next dev",
+    "build:dev": "APP_ENV=dev next build",
+    "build:prod": "APP_ENV=prod next build"
   },
   "dependencies": {
     "gsap": "3.12.5",
@@ -22,7 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
     "eslint": "^8",
     "eslint-config-next": "^15.1.0",
     "eslint-config-prettier": "^9.1.0",

@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from "@/assets/scss/pages/combined.module.scss";
-import { getAssetPath } from '@/utils/getAssetPath';
 
 // swiper
-import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperClass, SwiperSlide} from "swiper/react";
 import { Autoplay, Thumbs, EffectFade } from "swiper/modules";
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -36,6 +35,7 @@ import JourneyEndPointPc from "@/app/components/journeyEndPointPc";
 import JourneyEndPointMo from "@/app/components/journeyEndPointMo";
 import RawPath = gsap.plugins.RawPath;
 import Script from "next/script";
+import WaitlistForm from "@/app/components/waitlist/form";
 
 export default function Home() {
 	// breakpoint check
@@ -46,27 +46,22 @@ export default function Home() {
 	// header sticky
 	const headerRef = useRef<HTMLDivElement>(null);
 	const sectionRef = useRef<HTMLDivElement>(null);
-	const emailInputRef = useRef<HTMLInputElement>(null);
-
-	// modal
-	const modalSuccess = useRef<HTMLDialogElement>(null);
-	const modalFail = useRef<HTMLDialogElement>(null);
 
 	// hero swiper
 	useEffect(() => {
 		// console.log('isMobile', isMobile);
 		if (!indicatorSwiper || !heroSwiper) return;
 
-		['mouseover', 'focusin'].forEach(function (eventType) {
+		['mouseover', 'focusin'].forEach(function(eventType) {
 			indicatorSwiper.slides.forEach((slide) => {
 				slide.removeEventListener(eventType, changeActiveSlide);
 				slide.addEventListener(eventType, changeActiveSlide);
 			});
 		});
 
-		function changeActiveSlide(event: Event) {
+		function changeActiveSlide(event:Event) {
 			if (event.currentTarget) {
-				const el: HTMLElement = event.currentTarget as HTMLElement;
+				const el:HTMLElement = event.currentTarget as HTMLElement;
 				// console.log(el);
 				// console.log('changeActiveSlide', event.type, indicatorSwiper?.slides.indexOf(event.currentTarget));
 				if (indicatorSwiper?.slides.indexOf(el) !== undefined) {
@@ -84,7 +79,7 @@ export default function Home() {
 
 
 		return () => {
-			['mouseover', 'focusin'].forEach(function (eventType) {
+			['mouseover', 'focusin'].forEach(function(eventType) {
 				indicatorSwiper.slides.forEach((slide) => {
 					slide.removeEventListener(eventType, changeActiveSlide);
 				});
@@ -92,17 +87,17 @@ export default function Home() {
 		}
 	}, [isMobile, heroSwiper, indicatorSwiper]);
 
-	const onHeroSwiperAutoplay = (swiper: SwiperClass) => {
+	const onHeroSwiperAutoplay = (swiper:SwiperClass) => {
 		// console.log('onHeroSwiperAutoplay');
 		handleActiveSlide(swiper.realIndex);
 	}
 
-	const onIndicatorSlideChange = (swiper: SwiperClass) => {
+	const onIndicatorSlideChange = (swiper:SwiperClass) => {
 		// console.log('onIndicatorSlideChange');
 		handleActiveSlide(swiper.activeIndex);
 	}
 
-	const handleActiveSlide = (activeIndex: number) => {
+	const handleActiveSlide = (activeIndex:number) => {
 		// console.log('handleActiveSlide', activeIndex, heroSwiper?.realIndex !== activeIndex, indicatorSwiper?.activeIndex !== activeIndex);
 
 		indicatorSwiper?.slides.forEach((slide, index) => {
@@ -151,7 +146,7 @@ export default function Home() {
 					autoplay: true,
 					animationData: journeyAniData[index],
 				});
-				return { instance: animationInstance, played: false };
+				return {instance: animationInstance, played: false};
 			}
 			return null;
 		});
@@ -258,7 +253,7 @@ export default function Home() {
 
 			// Draw SVG path on scroll
 			gsap.fromTo(path,
-				{ strokeDashoffset: length },
+				{strokeDashoffset: length},
 				{
 					strokeDashoffset: 0,
 					scrollTrigger: {
@@ -271,13 +266,13 @@ export default function Home() {
 				}
 			);
 			gsap.fromTo(dot, {
-				motionPath: {
-					path: mainLine,
-					align: mainLine,
-					// autoRotate: true,
-					alignOrigin: [0.5, 0.5],
+					motionPath: {
+						path: mainLine,
+						align: mainLine,
+						// autoRotate: true,
+						alignOrigin: [0.5, 0.5],
+					},
 				},
-			},
 				{
 					scrollTrigger: {
 						trigger: mainLine,
@@ -316,26 +311,26 @@ export default function Home() {
 		function pathEase(path: SVGPathElement) {
 			const precision = 1;
 
-			const rawPath: RawPath = MotionPathPlugin.cacheRawPathMeasurements(MotionPathPlugin.getRawPath(gsap.utils.toArray(path)[0] as SVGPathElement), Math.round(precision * 12));
-			const useX = false;
-			const start = rawPath[0][useX ? 0 : 1];
-			const end = rawPath[rawPath.length - 1][rawPath[rawPath.length - 1].length - (useX ? 2 : 1)];
-			const range = end - start;
-			const l = Math.round(precision * 200);
-			const inc = 1 / l;
-			const positions = [0];
-			const a: number[] = [];
-			let minIndex = 0;
-			const smooth = [0];
-			const minChange = (1 / l) * 0.5;
-			const smoothRange = 0;
-			const fullSmoothRange = smoothRange * 2;
-			const getClosest = (p: number) => {
-				while (positions[minIndex] <= p && minIndex++ < l) { }
-				a.push((p - positions[minIndex - 1]) / (positions[minIndex] - positions[minIndex - 1]) * inc + minIndex * inc);
-				if (smoothRange && a.length > smoothRange && (a[a.length - 1] - a[a.length - 2] < minChange)) smooth.push(a.length - smoothRange);
-			}
-			let i = 1;
+			const rawPath:RawPath = MotionPathPlugin.cacheRawPathMeasurements(MotionPathPlugin.getRawPath(gsap.utils.toArray(path)[0] as SVGPathElement), Math.round(precision * 12));
+				const useX = false;
+				const start = rawPath[0][useX ? 0 : 1];
+				const end = rawPath[rawPath.length - 1][rawPath[rawPath.length-1].length - (useX ? 2 : 1)];
+				const range = end - start;
+				const l = Math.round(precision * 200);
+				const inc = 1 / l;
+				const positions = [0];
+				const a:number[] = [];
+				let minIndex = 0;
+				const smooth = [0];
+				const minChange = (1 / l) * 0.5;
+				const smoothRange = 0;
+				const fullSmoothRange = smoothRange * 2;
+				const getClosest = (p:number) => {
+					while (positions[minIndex] <= p && minIndex++ < l) { }
+					a.push((p - positions[minIndex-1]) / (positions[minIndex] - positions[minIndex - 1]) * inc + minIndex * inc);
+					if(smoothRange && a.length > smoothRange && (a[a.length - 1] - a[a.length - 2] < minChange)) smooth.push(a.length - smoothRange);
+				}
+				let i = 1;
 
 			for (; i < l; i++) {
 				positions[i] = (MotionPathPlugin.getPositionOnPath(rawPath, i / l)['y'] - start) / range;
@@ -347,7 +342,7 @@ export default function Home() {
 			}
 			a.push(1); // must end at 1.
 			if (smoothRange) { // smooth at the necessary indexes where a small difference was sensed. Make it a linear change over the course of the fullSmoothRange
-				smooth.push(l - fullSmoothRange + 1);
+				smooth.push(l-fullSmoothRange+1);
 				smooth.forEach(i => {
 					const start = a[i];
 					const j = Math.min(i + fullSmoothRange, l);
@@ -359,7 +354,7 @@ export default function Home() {
 					}
 				});
 			}
-			return (p: number) => {
+			return (p:number) => {
 				const i = p * l;
 				const s = a[i | 0];
 				return i ? s + (a[Math.ceil(i)] - s) * (i % 1) : 0;
@@ -389,8 +384,23 @@ export default function Home() {
 		if (videoRef.current) {
 			const videoEl = videoRef.current;
 			videoEl.play();
-			if (!isFirstPlayed) {
+			if(!isFirstPlayed) {
 				setIsFirstPlayed(true);
+			}
+
+			try {
+				if (typeof window.gtag === "function") {
+					window.gtag("event", "video_play", {
+						event_category: "Video",
+						event_label: "Aster Intro Video",
+					});
+				} else {
+					if (process.env.NODE_ENV === "development") {
+						console.warn("Google Analytics is not initialized. Event not sent.");
+					}
+				}
+			} catch (error) {
+				console.error("Failed to send GA event:", error);
 			}
 
 			if (isMobile && videoEl.requestFullscreen) {
@@ -411,7 +421,7 @@ export default function Home() {
 					<div className={styles['header-inner']}>
 						<h1 className={styles['logo-box']}>
 							<a href="#" className={styles['logo-link']}>
-								<img src={getAssetPath('/images/header_logo_white.svg')} alt="aster logo" className={styles['logo-white']} />
+								<img src="/images/header_logo_white.svg" alt="aster logo" className={styles['logo-white']} />
 							</a>
 						</h1>
 					</div>
@@ -431,14 +441,14 @@ export default function Home() {
 									allowTouchMove={false}
 									effect={'fade'}
 									onSwiper={setHeroSwiper}
-									autoplay={{ delay: 3000, disableOnInteraction: false }}
+									autoplay={{delay: 3000, disableOnInteraction: false}}
 									onAutoplay={onHeroSwiperAutoplay}
 								>
 									<SwiperSlide className={styles['first-slide'] || ''}>
 										<div className={styles['thumb-swiper-inner']}>
 											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src={getAssetPath('/images/img_swiper_life.jpg')} alt="" />
-													: <img src={getAssetPath('/images/img_swiper_life_mo.jpg')} alt="" />
+												{!isMobile ? <img src="/images/img_swiper_life.jpg" alt="" />
+													: <img src="/images/img_swiper_life_mo.jpg" alt="" />
 												}
 											</div>
 											<div className={styles['banner-title-box']}>
@@ -451,8 +461,8 @@ export default function Home() {
 									<SwiperSlide>
 										<div className={styles['thumb-swiper-inner']}>
 											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src={getAssetPath('/images/img_swiper_plan.jpg')} alt="" />
-													: <img src={getAssetPath('/images/img_swiper_plan_mo.jpg')} alt="" />
+												{!isMobile ? <img src="/images/img_swiper_plan.jpg" alt="" />
+													: <img src="/images/img_swiper_plan_mo.jpg" alt="" />
 												}
 											</div>
 											<div className={styles['banner-title-box']}>
@@ -466,23 +476,23 @@ export default function Home() {
 									<SwiperSlide>
 										<div className={styles['thumb-swiper-inner']}>
 											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src={getAssetPath('/images/img_swiper_execution.jpg')} alt="" />
-													: <img src={getAssetPath('/images/img_swiper_execution_mo.jpg')} alt="" />
+												{!isMobile ? <img src="/images/img_swiper_execution.jpg" alt="" />
+													: <img src="/images/img_swiper_execution_mo.jpg" alt="" />
 												}
 											</div>
 											<div className={styles['banner-title-box']}>
 												<span className={styles['text']}>Aster</span>
 												<span className={styles['text']}>helps</span>
 												<span className={styles['text']}>you</span>
-												<span className={styles['text']}>executes</span>
+												<span className={styles['text']}>execute</span>
 											</div>
 										</div>
 									</SwiperSlide>
 									<SwiperSlide>
 										<div className={styles['thumb-swiper-inner']}>
 											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src={getAssetPath('/images/img_swiper_reminder.jpg')} alt="" />
-													: <img src={getAssetPath('/images/img_swiper_reminder_mo.jpg')} alt="" />
+												{!isMobile ? <img src="/images/img_swiper_reminder.jpg" alt="" />
+													: <img src="/images/img_swiper_reminder_mo.jpg" alt="" />
 												}
 											</div>
 											<div className={styles['banner-title-box']}>
@@ -496,8 +506,8 @@ export default function Home() {
 									<SwiperSlide>
 										<div className={styles['thumb-swiper-inner']}>
 											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src={getAssetPath('/images/img_swiper_advice.jpg')} alt="" />
-													: <img src={getAssetPath('/images/img_swiper_advice_mo.jpg')} alt="" />
+												{!isMobile ? <img src="/images/img_swiper_advice.jpg" alt="" />
+													: <img src="/images/img_swiper_advice_mo.jpg" alt="" />
 												}
 											</div>
 											<div className={styles['banner-title-box']}>
@@ -531,52 +541,36 @@ export default function Home() {
 									<SwiperSlide>
 										<span className={styles['swiper-title']}>Navigate<br />your life</span>
 										<span className={styles['active-icon']}>
-											<img src={getAssetPath('/images/hero_indicator_01.svg')} alt="" />
+											<img src="/images/hero_indicator_01.svg" alt="" />
 										</span>
 									</SwiperSlide>
 									<SwiperSlide>
 										<span className={styles['swiper-title']}>Aster helps<br />you plan</span>
 										<span className={styles['active-icon']}>
-											<img src={getAssetPath('/images/hero_indicator_02.svg')} alt="" />
+											<img src="/images/hero_indicator_02.svg" alt="" />
 										</span>
 									</SwiperSlide>
 									<SwiperSlide>
 										<span className={styles['swiper-title']}>Aster helps<br />you execute</span>
 										<span className={styles['active-icon']}>
-											<img src={getAssetPath('/images/hero_indicator_03.svg')} alt="" />
+											<img src="/images/hero_indicator_03.svg" alt="" />
 										</span>
 									</SwiperSlide>
 									<SwiperSlide>
 										<span className={styles['swiper-title']}>Aster sends<br />you reminders</span>
 										<span className={styles['active-icon']}>
-											<img src={getAssetPath('/images/hero_indicator_04.svg')} alt="" />
+											<img src="/images/hero_indicator_04.svg" alt="" />
 										</span>
 									</SwiperSlide>
 									<SwiperSlide>
 										<span className={styles['swiper-title']}>Aster gives<br />you advice</span>
 										<span className={styles['active-icon']}>
-											<img src={getAssetPath('/images/hero_indicator_05.svg')} alt="" />
+											<img src="/images/hero_indicator_05.svg" alt="" />
 										</span>
 									</SwiperSlide>
 								</Swiper>
 							</div>
-							<div className={styles['input-group']}>
-								<div className={styles['input-desc']}><span>Join the waitlist for updates</span> <span>on getting early access to Aster</span></div>
-								<div className={styles['input-box']}>
-									<input ref={emailInputRef} type={"email"} className={styles['ui-input']} title={'email'} placeholder={'Your Email'} />
-									<button type={"submit"} className={styles['btn-input']} onClick={() => {
-										if (emailInputRef.current === null || modalSuccess.current === null || modalFail.current === null) return;
-										if (emailInputRef.current.value.length > 0) {
-											modalSuccess.current.showModal()
-										} else {
-											modalFail.current.showModal()
-										}
-										window.scroll(0, 0);
-									}}>
-										<span className={styles['text']}>Join waitlist</span>
-									</button>
-								</div>
-							</div>
+							<WaitlistForm />
 						</div>
 						<div className={styles['cont-box']} id="intro-aster">
 							<div className={styles['cont-inner']}>
@@ -591,8 +585,8 @@ export default function Home() {
 									</p>
 								</div>
 								<div ref={videoBoxRef} className={styles['video-box']}>
-									<video ref={videoRef} controls={isFirstPlayed} poster={getAssetPath('/video/video_poster.jpg')}>
-										<source src={getAssetPath('/video/video.mp4')} type="video/mp4" />
+									<video ref={videoRef} controls={isFirstPlayed} poster='/video/video_poster.jpg'>
+										<source src="/video/video.mp4" type="video/mp4" />
 									</video>
 
 									{/* Play button */}
@@ -620,13 +614,13 @@ export default function Home() {
 									<ul className={styles['journey-list']}>
 										<li className={styles['journey-item']}>
 											<div className={styles['info-area']}>
-												<div className={styles['info-title']}>Understand Your intents, Simplify Your Path</div>
+												<div className={styles['info-title']}>Understand Your Intents, Simplify Your Path</div>
 												<div className={styles['info-desc']}>Aster asks clarifying questions, so that your intent
 													leads to more personalized and relevant information and recommendations.
 												</div>
 											</div>
 											<div className={styles['img-area']}>
-												<img src={getAssetPath('/images/img_journey_01.jpg')} alt="journey image" />
+												<img src="/images/img_journey_01.jpg" alt="journey image" />
 												<div ref={lottieJourney01} className={styles['journey-ani']}></div>
 											</div>
 										</li>
@@ -638,7 +632,7 @@ export default function Home() {
 												</div>
 											</div>
 											<div className={styles['img-area']}>
-												<img src={getAssetPath('/images/img_journey_02.jpg')} alt="journey image" />
+												<img src="/images/img_journey_02.jpg" alt="journey image" />
 												<div ref={lottieJourney02} className={styles['journey-ani']}></div>
 											</div>
 										</li>
@@ -662,7 +656,7 @@ export default function Home() {
 												</div>
 											</div>
 											<div className={styles['img-area']}>
-												<img src={getAssetPath('/images/img_journey_04.jpg')} alt="journey image" />
+												<img src="/images/img_journey_04.jpg" alt="journey image" />
 												<div ref={lottieJourney04} className={styles['journey-ani']}></div>
 											</div>
 										</li>
@@ -702,49 +696,13 @@ export default function Home() {
 						</div>
 						<div className={styles['footer-right']}>
 							<div className={styles['logo-box']}>
-								<img src={getAssetPath('/images/footer_logo_white.svg')} alt="aster logo" className={styles['logo-white']} />
+								<img src="/images/footer_logo_white.svg" alt="aster logo" className={styles['logo-white']} />
 							</div>
 						</div>
 					</div>
 				</footer>
 				{/* // footer-wrapper */}
 
-				{/* dialog-wrapper */}
-				<dialog className={styles['dialog-wrapper']} ref={modalSuccess} id={'dialogSuccess'}>
-					<button className={styles['btn-close']} onClick={() => {
-						if (modalSuccess.current === null) return;
-						modalSuccess.current.close()
-					}}>
-						<span className='offscreen'>close alert</span>
-					</button>
-					<div className={styles['dialog-inner']}>
-						<div className={styles['info-guide-wrap']}>
-							<span className={styles['ico-alert-success']}></span>
-							<p className={styles['info-desc']}>Thank you!<br />We'll send you an email.</p>
-							<p className={styles['sub-desc']}>We will use the collected email addresses solely for advance reservations.</p>
-
-						</div>
-					</div>
-				</dialog>
-				{/* // dialog-wrapper */}
-
-				{/* dialog-wrapper */}
-				<dialog className={styles['dialog-wrapper']} ref={modalFail} id={'dialogFail'}>
-					<button className={styles['btn-close']} onClick={() => {
-						if (modalFail.current === null) return;
-						modalFail.current.close()
-					}}>
-						<span className='offscreen'>close alert</span>
-					</button>
-					<div className={styles['dialog-inner']}>
-						<div className={styles['info-guide-wrap']}>
-							<span className={styles['ico-alert-fail']}></span>
-							<p className={styles['info-desc']}>The email address you entered is invalid.<br />Please try again.
-							</p>
-						</div>
-					</div>
-				</dialog>
-				{/* // dialog-wrapper */}
 			</div>
 		</>
 	);
