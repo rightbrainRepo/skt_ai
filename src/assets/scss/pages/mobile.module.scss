@@ -21,6 +21,13 @@
         }
       }
     }
+    .header-wrapper-term {
+      padding: 38px 20px 80px 20px;
+      .logo-black {
+        width: 100px;
+        height: 28px;
+      }
+    }
     /* e: header */
 
     /* s: container */
@@ -68,9 +75,7 @@
               left: 0;
               right: 0;
               bottom: 110px;
-              //padding: 0 calc((100vw - 176px) / 2);
               margin: 0 -27.5vw;
-              //padding: 0 27.5vw;
 
               .swiper-title {
                 font-size: 18px;
@@ -88,7 +93,6 @@
               max-width: calc(100% - 64px);
               top: calc(50% - 100px + 110px);
               right: 32px;
-              //top: calc(35.56338028vh + 144px);
             }
           }
         }
@@ -97,7 +101,6 @@
           padding: 100px 0 200px;
           &:has(.journey-list-wrap) {
             padding-top: 100px;
-            padding-bottom: 307px;
           }
           .cont-inner {
             padding: 0 20px;
@@ -219,7 +222,6 @@
           position: relative;
           width: 100%;
           height: initial;
-          // aspect-ratio: 406 / 343;
 
           &:after {
             content: '';
@@ -231,7 +233,7 @@
             width: 70px;
             height: 70px;
             transform: translate(-50%, -50%);
-            background: url("/images/bg_aster_manage_mo.svg") no-repeat center;
+            background: url(#{variables.$basePath}/images/bg_aster_manage_mo.svg) no-repeat center;
             background-size: cover;
           }
 
@@ -366,9 +368,11 @@
           padding-bottom: 0;
 
           .journey-list {
+            padding-bottom: 418px;
             .journey-item {
               display: block;
               height: 508px;
+              padding-bottom: 450px;
 
               .info-area {
                 max-width: initial;
@@ -421,23 +425,43 @@
             }
           }
         }
-
+        /* journey-advice */
+        .journey-advice {
+          padding: 0 0 184px 58px;
+          text-align: left;
+          .info-title {
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 31.47px;
+            letter-spacing: -0.02em;
+            text-align: left;
+          }
+          .info-desc {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28.8px;
+            letter-spacing: -0.02em;
+            text-align: left;
+          }
+        }   
         /* journey-svg-wrap */
         .journey-svg-wrap {
           top: -144px;
           left: 16px;
           width: unset;
+          height: 3670px;
 
           .journey-bg-box, .journey-bg-stroke-box, .journey-bg-object-box {
             left: 0;
             transform: initial;
             width: 243px;
-            height: 3413px;
+            height: 3670px;
           }
 
           .journey-end-point {
             left: 3px;
-            bottom: -18px;
+            bottom: -20px;
           }
         }
 
@@ -480,6 +504,54 @@
         }
       }
     }
+    .container-wrapper-definition {
+      width: auto;
+      margin: 0 20px;
+      .definition-title {
+        width: 100%;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 36px;
+        text-align: center;
+        padding-bottom: 26px;
+        margin-bottom: 40px;
+      }
+      .definition-list {
+        width: 100%;
+        padding:0 0 91px 0;
+        > li {
+          & + li {
+            margin-top: 22px;
+          }
+          > ul {
+            margin-top: 16px;
+            li {
+              margin-top: 10px;
+              position: relative;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 24px;
+              padding: 0 0 0 13px;
+              a {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+        .definition-list-group {
+          display: flex;
+          > span {
+            &.definition-list-num {
+              width: 22px;
+              min-width: 22px;
+            }
+            font-size: 16px;
+            line-height: 24px;
+
+          }
+        }
+      }
+    }
     /* e: container */
 
     /* s: footer */
@@ -495,7 +567,7 @@
 
           .address-info {
             font-size: 18px;
-
+            white-space: normal;
             a {
               font-size: inherit;
               font-weight: inherit;
@@ -504,6 +576,16 @@
             }
             ~ .copyright-info {
               margin-top: 10px;
+            }
+            .group {
+              display: block;
+              & + .group {
+                margin-top: 30px;
+                margin-left: 0;
+                &::before{
+                  display: none;
+                }
+              }
             }
           }
         }
@@ -549,8 +631,8 @@
             font-size: 20px;
           }
           .sub-desc {
-             margin-top: 12px;
-             font-size: 14px;
+            margin-top: 12px;
+            font-size: 14px;
             line-height: 150%;
             letter-spacing: -0.28px;
           }

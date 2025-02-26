@@ -7,13 +7,14 @@
     "start:dev": "APP_ENV=dev next dev",
     "start:prod": "APP_ENV=prod next dev",
     "build:dev": "APP_ENV=dev next build",
-    "build:prod": "APP_ENV=prod next build"
+    "build:prod": "APP_ENV=prod next build",
+    "build:rightbrain": "APP_ENV=rightbrain next build"
   },
   "dependencies": {
     "gsap": "3.12.5",
     "intersection-observer": "^0.12.2",
     "lottie-web": "^5.12.2",
-    "next": "15.0.2",
+    "next": "^15.1.7",
     "node": "^22.12.0",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",

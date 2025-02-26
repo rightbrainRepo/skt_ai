@@ -2,7 +2,6 @@
 
 import React, {useEffect, useRef, useState} from "react";
 import styles from "@/assets/scss/pages/combined.module.scss";
-
 // swiper
 import {Swiper, SwiperClass, SwiperSlide} from "swiper/react";
 import { Autoplay, Thumbs, EffectFade } from "swiper/modules";
@@ -83,7 +82,7 @@ export default function Home() {
 				indicatorSwiper.slides.forEach((slide) => {
 					slide.removeEventListener(eventType, changeActiveSlide);
 				});
-			});
+			})
 		}
 	}, [isMobile, heroSwiper, indicatorSwiper]);
 
@@ -408,7 +407,10 @@ export default function Home() {
 			}
 		}
 	};
+	console.log(process.env)
 
+	// 김재성 : 최종 산출물은 제거 & 이미지 경로도 다 수정해야됨
+	const assetPath = process.env.NEXT_PUBLIC_ASSET_PATH ? process.env.NEXT_PUBLIC_ASSET_PATH : '';
 	return (
 		<>
 			<Script
@@ -420,289 +422,295 @@ export default function Home() {
 				<header className={`${styles['header-wrapper']}`} ref={headerRef}>
 					<div className={styles['header-inner']}>
 						<h1 className={styles['logo-box']}>
-							<a href="#" className={styles['logo-link']}>
-								<img src="/images/header_logo_white.svg" alt="aster logo" className={styles['logo-white']} />
+							<a href={`${assetPath}`} className={styles['logo-link']}>
+								<img src={`${assetPath}/images/header_logo_white.svg`} alt="aster logo" className={styles['logo-white']} />
 							</a>
 						</h1>
 					</div>
 				</header>
 				{/* // header-wrapper */}
-
 				{/* container-wrapper */}
 				<main className={styles['container-wrapper']}>
-					<div className={styles['content-wrap']}>
-						<div ref={sectionRef} className={styles['cont-full-box']}>
-							<div className={styles['swiper-container']}>
-								<Swiper
-									className={styles['swiper-wrap']}
-									modules={[Autoplay, Thumbs, EffectFade]}
-									slidesPerView={1}
-									watchSlidesProgress={true}
-									allowTouchMove={false}
-									effect={'fade'}
-									onSwiper={setHeroSwiper}
-									autoplay={{delay: 3000, disableOnInteraction: false}}
-									onAutoplay={onHeroSwiperAutoplay}
-								>
-									<SwiperSlide className={styles['first-slide'] || ''}>
-										<div className={styles['thumb-swiper-inner']}>
-											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src="/images/img_swiper_life.jpg" alt="" />
-													: <img src="/images/img_swiper_life_mo.jpg" alt="" />
-												}
-											</div>
-											<div className={styles['banner-title-box']}>
-												<span className={styles['text']}>Navigate</span>
-												<span className={styles['text']}>your</span>
-												<span className={styles['text']}>life</span>
-											</div>
+				<div className={styles['content-wrap']}>
+					<div ref={sectionRef} className={styles['cont-full-box']}>
+						<div className={styles['swiper-container']}>
+							<Swiper
+								className={styles['swiper-wrap']}
+								modules={[Autoplay, Thumbs, EffectFade]}
+								slidesPerView={1}
+								watchSlidesProgress={true}
+								allowTouchMove={false}
+								effect={'fade'}
+								onSwiper={setHeroSwiper}
+								autoplay={{delay: 3000, disableOnInteraction: false}}
+								onAutoplay={onHeroSwiperAutoplay}
+							>
+								<SwiperSlide className={styles['first-slide'] || ''}>
+									<div className={styles['thumb-swiper-inner']}>
+										<div className={styles['thumb-box']}>
+											{!isMobile ? <img src={`${assetPath}/images/img_swiper_life.jpg`} alt="" />
+												: <img src={`${assetPath}/images/img_swiper_life_mo.jpg`} alt="" />
+											}
 										</div>
-									</SwiperSlide>
-									<SwiperSlide>
-										<div className={styles['thumb-swiper-inner']}>
-											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src="/images/img_swiper_plan.jpg" alt="" />
-													: <img src="/images/img_swiper_plan_mo.jpg" alt="" />
-												}
-											</div>
-											<div className={styles['banner-title-box']}>
-												<span className={styles['text']}>Aster</span>
-												<span className={styles['text']}>helps</span>
-												<span className={styles['text']}>you</span>
-												<span className={styles['text']}>plan</span>
-											</div>
+										<div className={styles['banner-title-box']}>
+											<span className={styles['text']}>Navigate</span>
+											<span className={styles['text']}>your</span>
+											<span className={styles['text']}>life</span>
 										</div>
-									</SwiperSlide>
-									<SwiperSlide>
-										<div className={styles['thumb-swiper-inner']}>
-											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src="/images/img_swiper_execution.jpg" alt="" />
-													: <img src="/images/img_swiper_execution_mo.jpg" alt="" />
-												}
-											</div>
-											<div className={styles['banner-title-box']}>
-												<span className={styles['text']}>Aster</span>
-												<span className={styles['text']}>helps</span>
-												<span className={styles['text']}>you</span>
-												<span className={styles['text']}>execute</span>
-											</div>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className={styles['thumb-swiper-inner']}>
+										<div className={styles['thumb-box']}>
+											{!isMobile ? <img src={`${assetPath}/images/img_swiper_plan.jpg`} alt="" />
+												: <img src={`${assetPath}/images/img_swiper_plan_mo.jpg`} alt="" />
+											}
 										</div>
-									</SwiperSlide>
-									<SwiperSlide>
-										<div className={styles['thumb-swiper-inner']}>
-											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src="/images/img_swiper_reminder.jpg" alt="" />
-													: <img src="/images/img_swiper_reminder_mo.jpg" alt="" />
-												}
-											</div>
-											<div className={styles['banner-title-box']}>
-												<span className={styles['text']}>Aster</span>
-												<span className={styles['text']}>sends</span>
-												<span className={styles['text']}>you</span>
-												<span className={styles['text']}>reminders</span>
-											</div>
+										<div className={styles['banner-title-box']}>
+											<span className={styles['text']}>Kickstart</span><br />
+											<span className={styles['text']}>your</span>
+											<span className={styles['text']}>plans</span>
 										</div>
-									</SwiperSlide>
-									<SwiperSlide>
-										<div className={styles['thumb-swiper-inner']}>
-											<div className={styles['thumb-box']}>
-												{!isMobile ? <img src="/images/img_swiper_advice.jpg" alt="" />
-													: <img src="/images/img_swiper_advice_mo.jpg" alt="" />
-												}
-											</div>
-											<div className={styles['banner-title-box']}>
-												<span className={styles['text']}>Aster</span>
-												<span className={styles['text']}>gives</span>
-												<span className={styles['text']}>you</span>
-												<span className={styles['text']}>advice</span>
-											</div>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className={styles['thumb-swiper-inner']}>
+										<div className={styles['thumb-box']}>
+											{!isMobile ? <img src={`${assetPath}/images/img_swiper_execution.jpg`} alt="" />
+												: <img src={`${assetPath}/images/img_swiper_execution_mo.jpg`} alt="" />
+											}
 										</div>
-									</SwiperSlide>
-								</Swiper>
-								<Swiper
-									className={styles['swiper-thumb-wrap']}
-									modules={[Autoplay, Thumbs]}
-									speed={600}
-									slidesPerView={'auto'}
-									centeredSlides={true}
-									// loop={true}
-									// loopAdditionalSlides={10}
-									breakpoints={{
-										768: {
-											slidesPerView: 5,
-											centeredSlides: false,
-											loop: false,
-											allowTouchMove: false,
-										}
-									}}
-									onSwiper={setIndicatorSwiper}
-									onSlideChange={onIndicatorSlideChange}
-								>
-									<SwiperSlide>
-										<span className={styles['swiper-title']}>Navigate<br />your life</span>
-										<span className={styles['active-icon']}>
-											<img src="/images/hero_indicator_01.svg" alt="" />
-										</span>
-									</SwiperSlide>
-									<SwiperSlide>
-										<span className={styles['swiper-title']}>Aster helps<br />you plan</span>
-										<span className={styles['active-icon']}>
-											<img src="/images/hero_indicator_02.svg" alt="" />
-										</span>
-									</SwiperSlide>
-									<SwiperSlide>
-										<span className={styles['swiper-title']}>Aster helps<br />you execute</span>
-										<span className={styles['active-icon']}>
-											<img src="/images/hero_indicator_03.svg" alt="" />
-										</span>
-									</SwiperSlide>
-									<SwiperSlide>
-										<span className={styles['swiper-title']}>Aster sends<br />you reminders</span>
-										<span className={styles['active-icon']}>
-											<img src="/images/hero_indicator_04.svg" alt="" />
-										</span>
-									</SwiperSlide>
-									<SwiperSlide>
-										<span className={styles['swiper-title']}>Aster gives<br />you advice</span>
-										<span className={styles['active-icon']}>
-											<img src="/images/hero_indicator_05.svg" alt="" />
-										</span>
-									</SwiperSlide>
-								</Swiper>
-							</div>
-							<WaitlistForm />
+										<div className={styles['banner-title-box']}>
+											<span className={styles['text']}>Aster</span>
+											<span className={styles['text']}>helps</span>
+											<span className={styles['text']}>you</span>
+											<span className={styles['text']}>execute</span>
+										</div>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className={styles['thumb-swiper-inner']}>
+										<div className={styles['thumb-box']}>
+											{!isMobile ? <img src={`${assetPath}/images/img_swiper_reminder.jpg`} alt="" />
+												: <img src={`${assetPath}/images/img_swiper_reminder_mo.jpg`} alt="" />
+											}
+										</div>
+										<div className={styles['banner-title-box']}>
+											<span className={styles['text']}>Aster</span>
+											<span className={styles['text']}>sends</span>
+											<span className={styles['text']}>you</span>
+											<span className={styles['text']}>reminders</span>
+										</div>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className={styles['thumb-swiper-inner']}>
+										<div className={styles['thumb-box']}>
+											{!isMobile ? <img src={`${assetPath}/images/img_swiper_advice.jpg`} alt="" />
+												: <img src={`${assetPath}/images/img_swiper_advice_mo.jpg`} alt="" />
+											}
+										</div>
+										<div className={styles['banner-title-box']}>
+											<span className={styles['text']}>Aster</span>
+											<span className={styles['text']}>gives</span>
+											<span className={styles['text']}>you</span>
+											<span className={styles['text']}>advice</span>
+										</div>
+									</div>
+								</SwiperSlide>
+							</Swiper>
+							<Swiper
+								className={styles['swiper-thumb-wrap']}
+								modules={[Autoplay, Thumbs]}
+								speed={600}
+								slidesPerView={'auto'}
+								centeredSlides={true}
+								// loop={true}
+								// loopAdditionalSlides={10}
+								breakpoints={{
+									768: {
+										slidesPerView: 5,
+										centeredSlides: false,
+										loop: false,
+										allowTouchMove: false,
+									}
+								}}
+								onSwiper={setIndicatorSwiper}
+								onSlideChange={onIndicatorSlideChange}
+							>
+								<SwiperSlide>
+									<span className={styles['swiper-title']}>Navigate<br />your life</span>
+									<span className={styles['active-icon']}>
+										<img src={`${assetPath}/images/hero_indicator_01.svg`} alt="" />
+									</span>
+								</SwiperSlide>
+								<SwiperSlide>
+									<span className={styles['swiper-title']}>Kickstart<br />your plans</span>
+									<span className={styles['active-icon']}>
+										<img src={`${assetPath}/images/hero_indicator_02.svg`} alt="" />
+									</span>
+								</SwiperSlide>
+								<SwiperSlide>
+									<span className={styles['swiper-title']}>Aster helps<br />you execute</span>
+									<span className={styles['active-icon']}>
+										<img src={`${assetPath}/images/hero_indicator_03.svg`} alt="" />
+									</span>
+								</SwiperSlide>
+								<SwiperSlide>
+									<span className={styles['swiper-title']}>Aster sends<br />you reminders</span>
+									<span className={styles['active-icon']}>
+										<img src={`${assetPath}/images/hero_indicator_04.svg`} alt="" />
+									</span>
+								</SwiperSlide>
+								<SwiperSlide>
+									<span className={styles['swiper-title']}>Aster gives<br />you advice</span>
+									<span className={styles['active-icon']}>
+										<img src={`${assetPath}/images/hero_indicator_05.svg`} alt="" />
+									</span>
+								</SwiperSlide>
+							</Swiper>
 						</div>
-						<div className={styles['cont-box']} id="intro-aster">
-							<div className={styles['cont-inner']}>
-								<div className={styles['ctitle-wrap']}>
-									<p className={styles['ctitle']}>Introducing Aster</p>
-									<span className={styles['ico-green-aster']}></span>
-									<p className={styles['stext']}>
-										Aster is a Personal AI Agent designed to simplify life management.
-										By engaging in conversations, it understands user intentions,
-										provides personalized recommendations, and connects planning to
-										execution to enhance daily productivity.
-									</p>
-								</div>
-								<div ref={videoBoxRef} className={styles['video-box']}>
-									<video ref={videoRef} controls={isFirstPlayed} poster='/video/video_poster.jpg'>
-										<source src="/video/video.mp4" type="video/mp4" />
-									</video>
+						<WaitlistForm />
+					</div>
+					<div className={styles['cont-box']} id="intro-aster">
+						<div className={styles['cont-inner']}>
+							<div className={styles['ctitle-wrap']}>
+								<p className={styles['ctitle']}>Introducing Aster</p>
+								<span className={styles['ico-green-aster']}></span>
+								<p className={styles['stext']}>
+									Aster is a Personal AI Agent designed to simplify life management.
+									By engaging in conversations, it understands user intentions,
+									provides personalized recommendations, and connects planning to
+									execution to enhance daily productivity.
+								</p>
+							</div>
+							<div ref={videoBoxRef} className={styles['video-box']}>
+								<video ref={videoRef} controls={isFirstPlayed} poster={`${assetPath}/video/video_poster.jpg`} >
+									<source src={`${assetPath}/video/video.mp4`} type="video/mp4" />
+								</video>
 
-									{/* Play button */}
-									{!isFirstPlayed && isMobile && (
-										<button type="button" className={styles['controls']} onClick={playVideo}>
-											<span className={styles['btn-play']}>
-												<span className="offscreen">Play Mobile</span>
-											</span>
-										</button>
-									)}
+								{/* Play button */}
+								{!isFirstPlayed && isMobile && (
+									<button type="button" className={styles['controls']} onClick={playVideo}>
+										<span className={styles['btn-play']}>
+											<span className="offscreen">Play Mobile</span>
+										</span>
+									</button>
+								)}
 
-									{!isFirstPlayed && !isMobile && (
-										<button type="button" className={styles['controls']} onClick={playVideo}>
-											<span className={styles['btn-play']}>
-												<span className="offscreen">Play</span>
-											</span>
-										</button>
-									)}
-								</div>
+								{!isFirstPlayed && !isMobile && (
+									<button type="button" className={styles['controls']} onClick={playVideo}>
+										<span className={styles['btn-play']}>
+											<span className="offscreen">Play</span>
+										</span>
+									</button>
+								)}
 							</div>
 						</div>
-						<div className={styles['cont-box']} id="aster-journey">
-							<div className={styles['cont-inner']}>
-								<div className={styles['journey-list-wrap']}>
-									<ul className={styles['journey-list']}>
-										<li className={styles['journey-item']}>
-											<div className={styles['info-area']}>
-												<div className={styles['info-title']}>Understand Your Intents, Simplify Your Path</div>
-												<div className={styles['info-desc']}>Aster asks clarifying questions, so that your intent
-													leads to more personalized and relevant information and recommendations.
-												</div>
+					</div>
+					<div className={styles['cont-box']} id="aster-journey">
+						<div className={styles['cont-inner']}>
+							<div className={styles['journey-list-wrap']}>
+								<ul className={styles['journey-list']}>
+									<li className={styles['journey-item']}>
+										<div className={styles['info-area']}>
+											<div className={styles['info-title']}>Understand Your Intents, Simplify Your Path</div>
+											<div className={styles['info-desc']}>Aster asks clarifying questions, so that your intent leads to more personalized and relevant information and recommendations.
 											</div>
-											<div className={styles['img-area']}>
-												<img src="/images/img_journey_01.jpg" alt="journey image" />
-												<div ref={lottieJourney01} className={styles['journey-ani']}></div>
+										</div>
+										<div className={styles['img-area']}>
+											<img src={`${assetPath}/images/img_journey_01.jpg`} alt="journey image" />
+											<div ref={lottieJourney01} className={styles['journey-ani']}></div>
+										</div>
+									</li>
+									<li className={styles['journey-item']}>
+										<div className={styles['info-area']}>
+											<div className={styles['info-title']}>Planning Made Simple, Tasks Made Actionable</div>
+											<div className={styles['info-desc']}>Aster creates personalized plans based on your
+												objectives, breaking them down into clear, actionable tasks for effortless execution.
 											</div>
-										</li>
-										<li className={styles['journey-item']}>
-											<div className={styles['info-area']}>
-												<div className={styles['info-title']}>Planning Made Simple, Tasks Made Actionable</div>
-												<div className={styles['info-desc']}>Aster creates personalized plans based on your
-													objectives, breaking them down into clear, actionable tasks for effortless execution.
-												</div>
+										</div>
+										<div className={styles['img-area']}>
+											<img src={`${assetPath}/images/img_journey_02.jpg`} alt="journey image" />
+											<div ref={lottieJourney02} className={styles['journey-ani']}></div>
+										</div>
+									</li>
+									<li className={styles['journey-item']}>
+										<div className={styles['info-area']}>
+											<div className={styles['info-title']}>From Planning to Action, Seamlessly</div>
+											<div className={styles['info-desc']}>Connect with powerful services to expand your plans and
+												turn them into tangible results, all in one place
 											</div>
-											<div className={styles['img-area']}>
-												<img src="/images/img_journey_02.jpg" alt="journey image" />
-												<div ref={lottieJourney02} className={styles['journey-ani']}></div>
+										</div>
+										<div className={styles['img-area']}>
+											<div ref={lottieJourney03} className={styles['journey-ani']}></div>
+										</div>
+									</li>
+									<li className={styles['journey-item']}>
+										<div className={styles['info-area']}>
+											<div className={styles['info-title']}>Stay on Track with Timely <br />Reminders
 											</div>
-										</li>
-										<li className={styles['journey-item']}>
-											<div className={styles['info-area']}>
-												<div className={styles['info-title']}>From Planning to Action, Seamlessly</div>
-												<div className={styles['info-desc']}>Connect with powerful services to expand your plans and
-													turn them into tangible results, all in one place
-												</div>
+											<div className={styles['info-desc']}>Get notifications and alerts to ensure you never lose
+												focus, keeping you aligned with your plans and goals.
 											</div>
-											<div className={styles['img-area']}>
-												<div ref={lottieJourney03} className={styles['journey-ani']}></div>
-											</div>
-										</li>
-										<li className={styles['journey-item']}>
-											<div className={styles['info-area']}>
-												<div className={styles['info-title']}>Stay on Track with Timely <br />Reminders
-												</div>
-												<div className={styles['info-desc']}>Get notifications and alerts to ensure you never lose
-													focus, keeping you aligned with your plans and goals.
-												</div>
-											</div>
-											<div className={styles['img-area']}>
-												<img src="/images/img_journey_04.jpg" alt="journey image" />
-												<div ref={lottieJourney04} className={styles['journey-ani']}></div>
-											</div>
-										</li>
-									</ul>
+										</div>
+										<div className={styles['img-area']}>
+											<img src={`${assetPath}/images/img_journey_04.jpg`} alt="journey image" />
+											<div ref={lottieJourney04} className={styles['journey-ani']}></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div className={styles['journey-advice']}>
+								<div className={styles['info-title']}>Personalized Advice,<br />Just for you</div>
+								<div className={styles['info-desc']}>Aster offers tailored advice to help you make<br />decisions, solve challenges, and maximize your day.</div>
+							</div>
+							<div className={styles['journey-svg-wrap']}>
+								<div ref={journeyLine} className={styles['journey-bg-box']}>
+									{isMobile ? <JourneyLineMo /> : <JourneyLinePc />}
 								</div>
-								<div className={styles['journey-svg-wrap']}>
-									<div ref={journeyLine} className={styles['journey-bg-box']}>
-										{isMobile ? <JourneyLineMo /> : <JourneyLinePc />}
-									</div>
-									<div ref={journeyLineStroke} className={styles['journey-bg-stroke-box']}>
-										{isMobile ? <JourneyLineBgMo /> : <JourneyLineBgPc />}
-									</div>
-									<div ref={journeyLineObject} className={styles['journey-bg-object-box']}>
-										{isMobile ? <JourneyObjectsMo /> : <JourneyObjectsPc />}
-									</div>
-									<div ref={journeyDot} className={styles['journey-dot']}>
-										{isMobile ? <JourneyDotMo /> : <JourneyDotPc />}
-									</div>
-									<div ref={journeyEndPoint} className={styles['journey-end-point']}>
-										{isMobile ? <JourneyEndPointMo /> : <JourneyEndPointPc />}
-									</div>
+								<div ref={journeyLineStroke} className={styles['journey-bg-stroke-box']}>
+									{isMobile ? <JourneyLineBgMo /> : <JourneyLineBgPc />}
+								</div>
+								<div ref={journeyLineObject} className={styles['journey-bg-object-box']}>
+									{isMobile ? <JourneyObjectsMo /> : <JourneyObjectsPc />}
+								</div>
+								<div ref={journeyDot} className={styles['journey-dot']}>
+									{isMobile ? <JourneyDotMo /> : <JourneyDotPc />}
+								</div>
+								<div ref={journeyEndPoint} className={styles['journey-end-point']}>
+									{isMobile ? <JourneyEndPointMo /> : <JourneyEndPointPc />}
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 				</main>
 				{/* // container-wrapper */}
-
 				{/* footer-wrapper */}
 				<footer className={styles['footer-wrapper']}>
 					<div className={styles['footer-inner']}>
 						<div className={styles['footer-left']}>
 							<address className={styles['address-info']}>
-								Contact us<span className={styles['divider']}>|</span><a href="mailto:ask@asterapp.ai" type="email">ask@asterapp.ai</a>
+								<span className={styles['group']}>
+									<a href={`${assetPath}/termsofuse`}>Terms of Use</a>
+									<a href={`${assetPath}/privacypolicy`}>Privacy Policy</a>
+								</span>
+								<span className={styles['group']}>
+									<span>Contact us</span>
+									<a href="mailto:ask@asterapp.ai" type="email">ask@asterapp.ai</a>
+								</span>
 							</address>
 							<p className={styles['copyright-info']}>© 2025 SK TELECOM CO., LTD. ALL RIGHTS RESERVED.</p>
 						</div>
 						<div className={styles['footer-right']}>
 							<div className={styles['logo-box']}>
-								<img src="/images/footer_logo_white.svg" alt="aster logo" className={styles['logo-white']} />
+								<img src={`${assetPath}/images/footer_logo_white.svg`} alt="aster logo" className={styles['logo-white']} />
 							</div>
 						</div>
 					</div>
 				</footer>
 				{/* // footer-wrapper */}
-
 			</div>
 		</>
 	);
