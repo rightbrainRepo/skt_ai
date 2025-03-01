@@ -509,6 +509,18 @@
     .container-wrapper-definition {
       width: auto;
       margin: 0 20px;
+      .definition-description {
+        width: 100%;
+        padding:0 0 60px 0;
+        p {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 28.8px;
+          & + p {
+            line-height: 28.8px;
+          }
+        }
+      }
       .definition-title {
         width: 100%;
         font-weight: 400;
@@ -523,19 +535,32 @@
         padding:0 0 91px 0;
         > li {
           & + li {
-            margin-top: 22px;
+            margin-top: 60px;
+            &.babysteps {
+              margin-top: 22px;
+            }
           }
           > ul {
-            margin-top: 16px;
+            margin-top: 10px;
             li {
               margin-top: 10px;
               position: relative;
               font-weight: 400;
               font-size: 16px;
               line-height: 24px;
-              padding: 0 0 0 13px;
+              & + li {
+                margin-top: 24px;
+              }
               a {
                 text-decoration: underline;
+              }
+            }
+            &.definition-list-dot {
+              margin-top: 10px;
+              li {
+                text-indent: -14px;
+                padding-left: 14px;
+                margin-top: 0;
               }
             }
           }

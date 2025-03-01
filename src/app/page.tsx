@@ -693,7 +693,7 @@ export default function Home() {
 						<div className={styles['footer-left']}>
 							<address className={styles['address-info']}>
 								<span className={styles['group']}>
-									<a href={`${assetPath}/termsofuse`}>Terms of Use</a>
+									<a href={`${assetPath}/termsofuse`}>Terms of Service</a>
 									<a href={`${assetPath}/privacypolicy`}>Privacy Policy</a>
 								</span>
 								<span className={styles['group']}>

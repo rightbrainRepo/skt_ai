@@ -961,6 +961,28 @@
   .container-wrapper-definition {
     width: 100%;
     margin:0 auto;
+    .underline, a {
+      text-decoration: underline;
+    }
+    .spot {
+      text-decoration: underline;
+      color: #404040 !important;
+    }
+    .definition-description {
+      width: calc(100% - 220px);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding:0 0 100px 0;
+      p {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 38.4px;
+        letter-spacing: 0%;
+        & + p {
+          margin-top: 38.4px;
+        }
+      }
+    }
     .definition-title {
       width: calc(100% - 100px);
       max-width: 1320px;
@@ -977,55 +999,45 @@
     .definition-list {
       width: calc(100% - 220px);
       max-width: 1100px;
-      margin: 0 auto;
-      padding:0 0 91px 0;
+      margin: 0 auto 200px;
       > li {
         & + li {
-          margin-top: 48px;
+          margin-top: 100px;
+          &.babysteps {
+            margin-top: 48px;
+          }
         }
         > ul {
-          margin-top: 10px;
-          margin-left: 28px;
+          margin-top: 20px;
           li {
-            margin-top: 10px;
-            position: relative;
             font-weight: 400;
             font-size: 20px;
             line-height: 30px;
-            letter-spacing: 0%;
-            color: rgba(102, 102, 102, 1);
-            padding: 0 0 0 13px;
-            &::before {
-              content: '';
-              width: 3px;
-              height: 3px;
-              background: rgba(102, 102, 102, 1);
-              border-radius: 1.5px;
-              position: absolute; 
-              left: 0;
-              top: 14px;
+            color: #666;
+            & + li {
+              margin-top: 30px;
             }
-            
           }
-        }
-        a {
-          text-decoration: underline;
+          &.definition-list-dot {
+            margin-top: 20px;
+            li {
+              text-indent: -15px;
+              padding-left: 20px;
+              margin-top: 0;
+            }
+          }
         }
       }
       .definition-list-group {
         display: flex;
         > span {
-          &.definition-list-num {
-            display: inline-block;
-            width: 33px;
-            min-width: 33px;
-            text-align: right;
-            margin-right: 8px;
-          }
-          font-weight: 500;
+          font-weight: 700;
           font-size: 24px;
           line-height: 38.4px;
-          color: rgba(64, 64, 64, 1);
+          &.definition-list-suffix {
+            margin-left: 4px;
+            font-weight: 500;
+          }
         }
       }
       
